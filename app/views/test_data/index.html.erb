@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<%= link_to "Home", root_path %>
+
+<h1>Test Data</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @test_data.each do |test_datum| %>
+      <tr>
+        <td><%= test_datum.name %></td>
+        <td><%= link_to 'Show', test_datum %></td>
+        <td><%= link_to 'Edit', edit_test_datum_path(test_datum) %></td>
+        <td><%= link_to 'Destroy', test_datum, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div class="ml-3 <%= 'd-none' if @pagy.pages == 1 %>">
+  <%== pagy_bootstrap_nav_js(@pagy) %>
+</div>
+<div class="ml-3 mb-2">
+  <%== pagy_info(@pagy) %>
+</div>
+
+<br>
+
+<%= link_to 'New Test Datum', new_test_datum_path %>
